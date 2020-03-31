@@ -9,18 +9,22 @@
 	  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	  crossorigin="anonymous"></script>
 	<link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
+	 <!-- LBOOT -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <style>
       @import url('https://cesium.com/downloads/cesiumjs/releases/1.62/Build/Cesium/Widgets/widgets.css');
       html, body {padding: 0; margin: 0;}
       #map {top: 0; right: 0; bottom: 0; left: 0; position: absolute !important;}
-		.cesium-infoBox {
-			display: none;
-		}
+	  button.cesium-infoBox-camera{
+		  display: none;
+	  }
     </style>
   </head>
   <body>
     <div id="map"></div>
     <script>
+
       var viewer = new Cesium.Viewer('map', {
         animation: false,
         baseLayerPicker: false,
@@ -45,13 +49,15 @@
 	var l_entity_collection = new Cesium.CustomDataSource("l_entities");
 	l_entity_collection.entities.add({
 		id : "l_2",
+		name : "lahh3",
 		position : Cesium.Cartesian3.fromDegrees(-101.678, 57.7833),
 		point : {
 			pixelSize : 10,
 			color : Cesium.Color.RED,
 			outlineColor : Cesium.Color.WHITE,
 			outlineWidth : 3
-		}
+		},
+		description : "lahh<br>lahh2<br>lahh4"
 	});
 	l_entity_collection.entities.add({
 		id : "l_3",
@@ -79,25 +85,8 @@
 	viewer.scene.primitives.add(l_label_collection);
 	
 	var credit = new Cesium.Credit('');
-	$('.cesium-viewer-bottom').html('<div style="background-color: black; color: white; padding: 3px">collab between <a href="https://cesium.com/" target="_blank">Cesium<a/>, <a href="https://github.com/CSSEGISandData" target="_blank">CSSEGISandData</a>, and <a href="https://github.com/faalbane" target="_blank">faalbane</a></div>');
-	
-    viewer.selectedEntityChanged.addEventListener(function(l_entity) {
-		console.log(l_entity.id);
-	});
-	
-	var i = 0;
-
-	var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
-
-	handler.setInputAction(function (movement) {
-		i++;
-		console.log("LEFT_DOWN " + i);
-	}, Cesium.ScreenSpaceEventType.LEFT_DOWN);
-
-	handler.setInputAction(function () {
-		console.log("LEFT_UP " + i);
-	}, Cesium.ScreenSpaceEventType.LEFT_UP);
-	
+	$('.cesium-viewer-bottom').html('<div style="background-color: black; color: white; padding: 3px">sources: <br>data: <a href="https://github.com/CSSEGISandData" target="_blank">CSSEGISandData</a> <br> SDK: <a href="https://cesium.com/" target="_blank">Cesium<a/> <br> web engineer: <a href="https://github.com/faalbane" target="_blank">faalbane</a></div>');
+	$('.cesium-viewer-toolbar').prepend('<button>lahh</button>');
 	
 	
 	</script>
