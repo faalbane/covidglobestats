@@ -55,7 +55,7 @@ if($l_httpCode == 404) {
 		$l_i = 1;
 		while($l_i < $l_count){
 			if (isset($l_s[$l_i][3])) {
-				$l_godata[] = array("l_country_region" => $l_s[$l_i][3], "l_last_update" => $l_s[$l_i][4], "l_lat" => $l_s[$l_i][5], "l_lon" => $l_s[$l_i][6], "l_confirmed" => $l_s[$l_i][7], "l_deaths" => $l_s[$l_i][8], "l_recover" => $l_s[$l_i][9], "l_active" => $l_s[$l_i][10], "l_combo_key" => $l_s[$l_i][11]);	
+				$l_godata[] = array("l_uid" => $l_i, "l_country_region" => $l_s[$l_i][3], "l_last_update" => $l_s[$l_i][4], "l_lat" => $l_s[$l_i][5], "l_lon" => $l_s[$l_i][6], "l_confirmed" => $l_s[$l_i][7], "l_deaths" => $l_s[$l_i][8], "l_recover" => $l_s[$l_i][9], "l_active" => $l_s[$l_i][10], "l_combo_key" => $l_s[$l_i][11]);	
 			}
 			$l_i++;
 		}
@@ -94,7 +94,7 @@ if($l_httpCode == 404) {
 	$l_i = 1;
 	while($l_i < $l_count){
 		if (isset($l_s[$l_i][3])) {
-			$l_godata[] = array("l_country_region" => $l_s[$l_i][3], "l_last_update" => $l_s[$l_i][4], "l_lat" => $l_s[$l_i][5], "l_lon" => $l_s[$l_i][6], "l_confirmed" => $l_s[$l_i][7], "l_deaths" => $l_s[$l_i][8], "l_recover" => $l_s[$l_i][9], "l_active" => $l_s[$l_i][10], "l_combo_key" => $l_s[$l_i][11]);	
+			$l_godata[] = array("l_uid" => $l_i, "l_country_region" => $l_s[$l_i][3], "l_last_update" => $l_s[$l_i][4], "l_lat" => $l_s[$l_i][5], "l_lon" => $l_s[$l_i][6], "l_confirmed" => $l_s[$l_i][7], "l_deaths" => $l_s[$l_i][8], "l_recover" => $l_s[$l_i][9], "l_active" => $l_s[$l_i][10], "l_combo_key" => $l_s[$l_i][11]);	
 		}
 		$l_i++;
 	}

@@ -46,32 +46,63 @@
         destination: Cesium.Cartesian3.fromDegrees(10, 50, 8000000)
       });
 	  
-	//l_entity collection
-	var l_entity_collection = new Cesium.CustomDataSource("l_entities");
-	l_entity_collection.entities.add({
-		id : "l_2",
-		name : "lahh3",
-		position : Cesium.Cartesian3.fromDegrees(-101.678, 57.7833),
-		point : {
-			pixelSize : 10,
-			color : Cesium.Color.RED,
-			outlineColor : Cesium.Color.WHITE,
-			outlineWidth : 3
+	//l_ajax
+	var l_grow = 'l_grow'; //l_tradition
+	$.ajax({
+		url: "php/l_fetch_covid_data.php",
+		type: "POST",
+		dataType: 'json',
+		cache: false,
+		success: function (data) {
+
+			//l_go
+			console.log(data);
+			if(data[0][0].l_status == "l_go!"){
+				
+				//l_mm
+				/* l_godata:
+				l_uid
+				l_country_region
+				l_last_update
+				l_lat
+				l_lon
+				l_confirmed
+				l_deaths
+				l_recover
+				l_active
+				l_combo_key
+				*/
+				//l_entity collection
+				var l_entity_collection = new Cesium.CustomDataSource("l_entities");
+				$.each(data[1], function (k, v) {
+					
+					l_descrip_key = "Confirmed Cases: " + v.l_confirmed + "<br>Deaths: " + v.l_deaths + "<br>Recovered: " + v.l_recover + "<br>Active Cases: " + v.l_active + "<br>Last Updated: " + v.l_last_update;
+					l_entity_collection.entities.add({
+						id : v.l_uid,
+						name : v.l_combo_key,
+						position : Cesium.Cartesian3.fromDegrees(v.l_lon, v.l_lat),
+						point : {
+							pixelSize : 10,
+							color : Cesium.Color.RED,
+							outlineColor : Cesium.Color.WHITE,
+							outlineWidth : 3
+						},
+						description : l_descrip_key
+					});
+					
+				});
+				viewer.dataSources.add(l_entity_collection);
+			}
+			if(data[0][0].l_status == "l_oops!"){
+				alert("oops! please contact faalbane@gmail.com asap!")
+			}
+
 		},
-		description : "lahh<br>lahh2<br>lahh4"
-	});
-	l_entity_collection.entities.add({
-		id : "l_3",
-		position : Cesium.Cartesian3.fromDegrees(-75.166493, 39.9060534),
-		point : {
-			pixelSize : 10,
-			color : Cesium.Color.RED,
-			outlineColor : Cesium.Color.WHITE,
-			outlineWidth : 3
+		error: function (XMLHttpRequest, textStatus, errorThrown) {
+			alert("Oops! error");
 		}
-	});
-	viewer.dataSources.add(l_entity_collection);
-	
+	}) 
+
 	//l_label collection
 	/*
 	let l_label_collection = new Cesium.LabelCollection();
