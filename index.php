@@ -76,19 +76,47 @@
 				var l_entity_collection = new Cesium.CustomDataSource("l_entities");
 				$.each(data[1], function (k, v) {
 					
+					if(v.l_active == 0){
+						v.l_active = v.l_confirmed - v.l_deaths - v.l_recover;
+					}
+					if(v.l_active < 0){
+						v.l_active = '-';
+					}
 					l_descrip_key = "Confirmed Cases: " + v.l_confirmed + "<br>Deaths: " + v.l_deaths + "<br>Recovered: " + v.l_recover + "<br>Active Cases: " + v.l_active + "<br>Last Updated: " + v.l_last_update;
-					l_entity_collection.entities.add({
-						id : v.l_uid,
-						name : v.l_combo_key,
-						position : Cesium.Cartesian3.fromDegrees(v.l_lon, v.l_lat),
-						point : {
-							pixelSize : 10,
-							color : Cesium.Color.RED,
-							outlineColor : Cesium.Color.WHITE,
-							outlineWidth : 3
-						},
-						description : l_descrip_key
-					});
+					if(v.l_confirmed == 0 && v.l_deaths == 0 && v.l_recover == 0 && v.l_active == 0){
+					
+						//l_think
+						/*
+						l_entity_collection.entities.add({
+							id : v.l_uid,
+							name : v.l_combo_key,
+							position : Cesium.Cartesian3.fromDegrees(v.l_lon, v.l_lat),
+							point : {
+								pixelSize : 10,
+								color : Cesium.Color.BLUE,
+								outlineColor : Cesium.Color.WHITE,
+								outlineWidth : 3
+							},
+							description : l_descrip_key
+						});
+						*/
+						
+					}else{
+						
+						l_entity_collection.entities.add({
+							id : v.l_uid,
+							name : v.l_combo_key,
+							position : Cesium.Cartesian3.fromDegrees(v.l_lon, v.l_lat),
+							point : {
+								pixelSize : 10,
+								color : Cesium.Color.RED,
+								outlineColor : Cesium.Color.WHITE,
+								outlineWidth : 3
+							},
+							description : l_descrip_key
+						});
+						
+					}
 					
 				});
 				viewer.dataSources.add(l_entity_collection);
@@ -121,7 +149,7 @@
 	
 	var credit = new Cesium.Credit('');
 	$('.cesium-viewer-bottom').html('<div style="background-color: black; color: white; padding: 3px">sources: <br>data: <a href="https://github.com/CSSEGISandData" target="_blank">CSSEGISandData</a> <br> SDK: <a href="https://cesium.com/" target="_blank">Cesium<a/> <br> web engineer: <a href="https://github.com/faalbane" target="_blank">faalbane</a></div>');
-	$('.cesium-viewer-toolbar').prepend('<button>lahh</button>');
+	//$('.cesium-viewer-toolbar').prepend('<button>lahh</button>');
 	
 	
 	</script>
