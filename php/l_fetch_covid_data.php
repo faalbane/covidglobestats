@@ -11,7 +11,7 @@ $l_yesterdate = date('m-d-Y', strtotime("yesterday"));
 $l_gostatus = array();
 $l_godata = array();
 
-$l_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_today_date . ".csv";
+$l_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_yesterdate . ".csv";
 $l_handle = curl_init($l_url);
 curl_setopt($l_handle,  CURLOPT_RETURNTRANSFER, TRUE);
 
@@ -24,7 +24,7 @@ if($l_httpCode == 404) {
 	curl_close($l_handle);
     /* Handle 404 here. */
 	//try l_yesterdate data
-	$l_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_yesterdate . ".csv";
+	$l_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_today_date . ".csv";
 	$l_handle = curl_init($l_url);
 	curl_setopt($l_handle,  CURLOPT_RETURNTRANSFER, TRUE);
 	
@@ -42,7 +42,7 @@ if($l_httpCode == 404) {
 		curl_close($l_handle);
 		//l_go
 		//echo "lahh3";
-		$l_data = file_get_contents("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_today_date . ".csv");
+		$l_data = file_get_contents("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_yesterdate . ".csv");
 		$l_rows = explode("\n",$l_data);
 		$l_s = array();
 		foreach($l_rows as $l_row) {
@@ -65,7 +65,7 @@ if($l_httpCode == 404) {
 	curl_close($l_handle);
 	//l_go
 	//echo "lahh3";
-	$l_data = file_get_contents("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_today_date . ".csv");
+	$l_data = file_get_contents("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" . $l_yesterdate . ".csv");
 	$l_rows = explode("\n",$l_data);
 	$l_s = array();
 	foreach($l_rows as $l_row) {

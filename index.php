@@ -147,8 +147,22 @@
 	viewer.scene.primitives.add(l_label_collection);
 	*/
 	
+	/*
+	var l_html = '';
+	l_html += '<div style="background-color: black; color: white; padding: 3px">';
+	l_html += '<table>';
+		l_html += '<tr>';
+			l_html += '<td>sources:</td>';
+			l_html += '<td>data: <a href="https://github.com/CSSEGISandData" target="_blank">CSSEGISandData</a></td>';
+			l_html += '<td>SDK: <a href="https://cesium.com/" target="_blank">Cesium<a/></td>';
+			l_html += '<td>Github: <a href="https://github.com/faalbane/covidglobestats" target="_blank">covidglobestats</a></td>';
+		l_html += '</tr>';
+	l_html += '</table>';
+	l_html += '</div>';
+	*/
+		
 	var credit = new Cesium.Credit('');
-	$('.cesium-viewer-bottom').html('<div style="background-color: black; color: white; padding: 3px">sources: <br>data: <a href="https://github.com/CSSEGISandData" target="_blank">CSSEGISandData</a> <br> SDK: <a href="https://cesium.com/" target="_blank">Cesium<a/> <br> web engineer: <a href="https://github.com/faalbane" target="_blank">faalbane</a></div>');
+	$('.cesium-viewer-bottom').html('<div style="background-color: black; color: white; padding: 3px">sources: <br>data: <a href="https://github.com/CSSEGISandData" target="_blank">CSSEGISandData</a> <br> SDK: <a href="https://cesium.com/" target="_blank">Cesium<a/> <br> Github: <a href="https://github.com/faalbane/covidglobestats" target="_blank">covidglobestats</a></div>');
 	//$('.cesium-viewer-toolbar').prepend('<button>lahh</button>');
 	
 	
