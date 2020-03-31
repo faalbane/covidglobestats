@@ -25,6 +25,7 @@
     <div id="map"></div>
     <script>
 
+	//l_init viewer
       var viewer = new Cesium.Viewer('map', {
         animation: false,
         baseLayerPicker: false,
@@ -34,7 +35,7 @@
         geocoder: false,
         fullscreenButton: false,
         imageryProvider: new Cesium.UrlTemplateImageryProvider({
-          url: 'https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=2GuOVQtAZMXdkCbgDL9T',
+          url: 'https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}@2x.jpg?key=2GuOVQtAZMXdkCbgDL9T',
           tileWidth: 512,
           tileHeight: 512,
           credit: new Cesium.Credit('<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>', true)
@@ -45,7 +46,7 @@
         destination: Cesium.Cartesian3.fromDegrees(10, 50, 8000000)
       });
 	  
-	  
+	//l_entity collection
 	var l_entity_collection = new Cesium.CustomDataSource("l_entities");
 	l_entity_collection.entities.add({
 		id : "l_2",
@@ -71,6 +72,8 @@
 	});
 	viewer.dataSources.add(l_entity_collection);
 	
+	//l_label collection
+	/*
 	let l_label_collection = new Cesium.LabelCollection();
 	l_label_collection.add({
 	  position: Cesium.Cartesian3.fromDegrees(-101.678, 57.7833),
@@ -83,6 +86,7 @@
 	  translucencyByDistance : new Cesium.NearFarScalar(0.2e7, 1.0, 0.3e7, 0.0)
 	});
 	viewer.scene.primitives.add(l_label_collection);
+	*/
 	
 	var credit = new Cesium.Credit('');
 	$('.cesium-viewer-bottom').html('<div style="background-color: black; color: white; padding: 3px">sources: <br>data: <a href="https://github.com/CSSEGISandData" target="_blank">CSSEGISandData</a> <br> SDK: <a href="https://cesium.com/" target="_blank">Cesium<a/> <br> web engineer: <a href="https://github.com/faalbane" target="_blank">faalbane</a></div>');
